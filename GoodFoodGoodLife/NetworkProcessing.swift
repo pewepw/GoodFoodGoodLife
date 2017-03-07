@@ -10,6 +10,7 @@ import Foundation
 
 public let DANetworkingErrorDomain = "\(Bundle.main.bundleIdentifier!).NetworkingError"
 public let MissingHTTPResponseError: Int = 10
+public let UnexpectedResponseError: Int = 20
 
 class NetworkProcessing {
     
