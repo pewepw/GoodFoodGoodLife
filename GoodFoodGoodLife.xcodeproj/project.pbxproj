@@ -16,6 +16,7 @@
 		4AD1B2761E6C52260002FED9 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2751E6C52260002FED9 /* Coordinate.swift */; };
 		4AD1B2781E6C53290002FED9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2771E6C53290002FED9 /* Location.swift */; };
 		4AD1B27A1E6C55F60002FED9 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2791E6C55F50002FED9 /* Venue.swift */; };
+		4AD8EF5B1E6F018600D3E438 /* FoursquareEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8EF5A1E6F018600D3E438 /* FoursquareEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4AD1B2751E6C52260002FED9 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		4AD1B2771E6C53290002FED9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4AD1B2791E6C55F50002FED9 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		4AD8EF5A1E6F018600D3E438 /* FoursquareEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				4AD1B2751E6C52260002FED9 /* Coordinate.swift */,
 				4AD1B2771E6C53290002FED9 /* Location.swift */,
 				4AD1B2791E6C55F50002FED9 /* Venue.swift */,
+				4AD8EF5A1E6F018600D3E438 /* FoursquareEndpoint.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AD1B2631E6C2D440002FED9 /* ViewController.swift in Sources */,
+				4AD8EF5B1E6F018600D3E438 /* FoursquareEndpoint.swift in Sources */,
 				4AD1B27A1E6C55F60002FED9 /* Venue.swift in Sources */,
 				4AD1B2611E6C2D440002FED9 /* AppDelegate.swift in Sources */,
 				4AD1B2781E6C53290002FED9 /* Location.swift in Sources */,
@@ -326,6 +330,7 @@
 				4AD1B2711E6C2D440002FED9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
