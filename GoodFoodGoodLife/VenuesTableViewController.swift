@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class VenuesTableViewController : UITableViewController {
     
@@ -28,18 +29,21 @@ class VenuesTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         foursquareClient = FoursquareClient(clientID: clientID, clientSecret: clientSecret)
         coordinate = Coordinate(latitude: 40.7, longtitude: -74)
         fetchVenues()
     }
     
-    func fetchVenues() {
+    @IBAction func fetchVenues() {
         if let coordinate = coordinate {
             foursquareClient.fetchVenuesFor(coordinate: coordinate, completion: { (result) in
                 switch result {
                 case .success(let venues):
                     self.venues = venues
-                    print(self.venues)
+                    self.refreshControl?.endRefreshing()
                 case .failure(let error):
                     let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -52,6 +56,8 @@ class VenuesTableViewController : UITableViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension VenuesTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,12 +69,31 @@ extension VenuesTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.venueCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.venueCell, for: indexPath) as! VenueTableViewCell
         let venue = venues[indexPath.row]
         
-        cell.textLabel?.text = venue.name
+        cell.foursquareClient = self.foursquareClient
+        cell.venue = venue
         
         return cell
     }
     
 }
+
+// MARK: - UITableViewDelegate
+
+extension VenuesTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let venue = self.venues[indexPath.row]
+        if let url = venue.url {
+            let safariVC = SFSafariViewController(url: url)
+            self.present(safariVC, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Ooops!", message: "Looks like the venue doesn't provide a website", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
