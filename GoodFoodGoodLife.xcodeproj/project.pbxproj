@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A8A1BE41E74661300850076 /* VenuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A1BE31E74661300850076 /* VenuesTableViewController.swift */; };
 		4AD1B2611E6C2D440002FED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2601E6C2D440002FED9 /* AppDelegate.swift */; };
 		4AD1B2631E6C2D440002FED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2621E6C2D440002FED9 /* ViewController.swift */; };
 		4AD1B2661E6C2D440002FED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD1B2641E6C2D440002FED9 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A8A1BE31E74661300850076 /* VenuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableViewController.swift; sourceTree = "<group>"; };
 		4AD1B25D1E6C2D440002FED9 /* GoodFoodGoodLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodFoodGoodLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD1B2601E6C2D440002FED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AD1B2621E6C2D440002FED9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A8A1BE21E74653F00850076 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4AD1B2621E6C2D440002FED9 /* ViewController.swift */,
+				4A8A1BE31E74661300850076 /* VenuesTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		4AD1B2541E6C2D430002FED9 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +79,9 @@
 		4AD1B25F1E6C2D440002FED9 /* GoodFoodGoodLife */ = {
 			isa = PBXGroup;
 			children = (
+				4A8A1BE21E74653F00850076 /* Controllers */,
 				4AD1B2721E6C2D4C0002FED9 /* Model */,
 				4AD1B2601E6C2D440002FED9 /* AppDelegate.swift */,
-				4AD1B2621E6C2D440002FED9 /* ViewController.swift */,
 				4AD1B2641E6C2D440002FED9 /* Main.storyboard */,
 				4AD1B2671E6C2D440002FED9 /* Assets.xcassets */,
 				4AD1B2691E6C2D440002FED9 /* LaunchScreen.storyboard */,
@@ -169,6 +180,7 @@
 				4AD8EF5F1E6F2A9200D3E438 /* APIResult.swift in Sources */,
 				4AD1B2631E6C2D440002FED9 /* ViewController.swift in Sources */,
 				4AD8EF5B1E6F018600D3E438 /* FoursquareEndpoint.swift in Sources */,
+				4A8A1BE41E74661300850076 /* VenuesTableViewController.swift in Sources */,
 				4AD1B27A1E6C55F60002FED9 /* Venue.swift in Sources */,
 				4AD1B2611E6C2D440002FED9 /* AppDelegate.swift in Sources */,
 				4AD1B2781E6C53290002FED9 /* Location.swift in Sources */,
