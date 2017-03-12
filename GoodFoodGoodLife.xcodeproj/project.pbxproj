@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4A8A1BE41E74661300850076 /* VenuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A1BE31E74661300850076 /* VenuesTableViewController.swift */; };
 		4A8A1BE71E7494C700850076 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A1BE61E7494C700850076 /* VenueTableViewCell.swift */; };
+		4A94F5E31E757E6A00DE31DB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94F5E21E757E6A00DE31DB /* LocationManager.swift */; };
+		4A94F5E61E75ACAD00DE31DB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A94F5E51E75ACAD00DE31DB /* MapKit.framework */; };
 		4AD1B2611E6C2D440002FED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2601E6C2D440002FED9 /* AppDelegate.swift */; };
 		4AD1B2631E6C2D440002FED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD1B2621E6C2D440002FED9 /* ViewController.swift */; };
 		4AD1B2661E6C2D440002FED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD1B2641E6C2D440002FED9 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		4A8A1BE31E74661300850076 /* VenuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableViewController.swift; sourceTree = "<group>"; };
 		4A8A1BE61E7494C700850076 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
+		4A94F5E21E757E6A00DE31DB /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4A94F5E51E75ACAD00DE31DB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4AD1B25D1E6C2D440002FED9 /* GoodFoodGoodLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodFoodGoodLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD1B2601E6C2D440002FED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AD1B2621E6C2D440002FED9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A94F5E61E75ACAD00DE31DB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,11 +76,20 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		4A94F5E41E75ACAD00DE31DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A94F5E51E75ACAD00DE31DB /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4AD1B2541E6C2D430002FED9 = {
 			isa = PBXGroup;
 			children = (
 				4AD1B25F1E6C2D440002FED9 /* GoodFoodGoodLife */,
 				4AD1B25E1E6C2D440002FED9 /* Products */,
+				4A94F5E41E75ACAD00DE31DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +125,7 @@
 				4AD8EF5A1E6F018600D3E438 /* FoursquareEndpoint.swift */,
 				4AD8EF5C1E6F2A3400D3E438 /* FoursquareClient.swift */,
 				4AD8EF5E1E6F2A9200D3E438 /* APIResult.swift */,
+				4A94F5E21E757E6A00DE31DB /* LocationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -149,6 +164,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 46SPJZ9KQP;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -196,6 +216,7 @@
 				4AD1B27A1E6C55F60002FED9 /* Venue.swift in Sources */,
 				4AD1B2611E6C2D440002FED9 /* AppDelegate.swift in Sources */,
 				4AD1B2781E6C53290002FED9 /* Location.swift in Sources */,
+				4A94F5E31E757E6A00DE31DB /* LocationManager.swift in Sources */,
 				4AD8EF5D1E6F2A3400D3E438 /* FoursquareClient.swift in Sources */,
 				4AD1B2741E6C2D5F0002FED9 /* NetworkProcessing.swift in Sources */,
 				4AD1B2761E6C52260002FED9 /* Coordinate.swift in Sources */,

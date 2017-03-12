@@ -8,18 +8,31 @@
 
 import UIKit
 import SafariServices
+import MapKit
 
 class VenuesTableViewController : UITableViewController {
+    
+    @IBOutlet weak var headerStackView: UIStackView!
+    @IBOutlet weak var mapView: MKMapView!
     
     var venues: [Venue] = [] {
         didSet {
             self.tableView.reloadData()
+            self.addMapAnnotations()
         }
     }
-    var coordinate: Coordinate!
+    
+    var coordinate: Coordinate? {
+        didSet {
+            self.fetchVenues()
+        }
+    }
+    
+    let locationManager = LocationManager()
     var clientID: String = "Q4RAXDBRXZQHAG4ENIWYI4JVQXGQZB3MZ34P4CT4QHJYL2G4"
     var clientSecret: String = "IFMKHL4WGV013LQQWI4TXYFVH52GRQFBFJVUU1X1G2STGO4R"
     var foursquareClient: FoursquareClient!
+     let searchController = UISearchController(searchResultsController: nil)
     
     struct Storyboard {
         static let venueCell = "VenueCell"
@@ -33,8 +46,27 @@ class VenuesTableViewController : UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         foursquareClient = FoursquareClient(clientID: clientID, clientSecret: clientSecret)
-        coordinate = Coordinate(latitude: 40.7, longtitude: -74)
-        fetchVenues()
+        // coordinate = Coordinate(latitude: 40.7, longtitude: -74)
+        // fetchVenues()
+        
+        // Location Service
+        locationManager.getPermission()
+        locationManager.didGetLocation = { [weak self] coordinate in
+            self?.coordinate = coordinate
+            
+        }
+        
+        mapView.delegate = self
+        
+        // configure search bar
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        headerStackView.addSubview(searchController.searchBar)
+        
+        
+        
     }
     
     @IBAction func fetchVenues() {
@@ -52,8 +84,41 @@ class VenuesTableViewController : UITableViewController {
                 }
             })
         }
-        
     }
+    
+// MARK: - Map Annotations
+    
+    func addMapAnnotations() {
+        // 1. loop through venues
+        self.removeAnnotations()
+        
+        if venues.count > 0 {
+            let annotations: [MKPointAnnotation] = venues.map({ venue in
+                
+                // 2. create an annotation object
+                let point = MKPointAnnotation()
+                if let coordinate = venue.location?.coordinate {
+                    point.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longtitude)
+                    point.title = venue.name
+                    point.subtitle = venue.categoryName
+                    
+                }
+                return point
+            })
+            
+            // 3. add annotations to the mapview
+            mapView.addAnnotations(annotations)
+        }
+    }
+    
+    func removeAnnotations() {
+        if mapView.annotations.count != 0 {
+            for annotation in mapView.annotations {
+                mapView.removeAnnotation(annotation)
+            }
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -93,6 +158,40 @@ extension VenuesTableViewController {
             let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension VenuesTableViewController : MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        var region = MKCoordinateRegion()
+        region.center = mapView.userLocation.coordinate
+        region.span.latitudeDelta = 0.0001
+        region.span.longitudeDelta = 0.0001
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension VenuesTableViewController : UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let coordinate = coordinate {
+            foursquareClient.fetchVenuesFor(coordinate: coordinate, query: searchController.searchBar.text, completion: { (result) in
+                switch result {
+                case .success(let venues):
+                    self.venues = venues
+                case .failure(let error):
+                    print(error)
+                }
+            })
         }
     }
 }

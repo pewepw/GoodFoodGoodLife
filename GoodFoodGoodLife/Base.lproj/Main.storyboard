@@ -17,12 +17,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="JHO-7S-0qx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-sH-FeX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                                    <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Kk-ez-izz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                                        </mapView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="qxS-sH-FeX" firstAttribute="leading" secondItem="JHO-7S-0qx" secondAttribute="leading" id="JVp-AH-DaC"/>
+                                <constraint firstAttribute="trailing" secondItem="qxS-sH-FeX" secondAttribute="trailing" id="SBw-9o-ms0"/>
+                                <constraint firstAttribute="bottom" secondItem="qxS-sH-FeX" secondAttribute="bottom" id="cKT-Fs-8e5"/>
+                                <constraint firstItem="qxS-sH-FeX" firstAttribute="top" secondItem="JHO-7S-0qx" secondAttribute="top" id="pT9-rt-l8P"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueCell" rowHeight="71" id="y4e-ht-NEs" customClass="VenueTableViewCell" customModule="GoodFoodGoodLife" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                <rect key="frame" x="0.0" y="378" width="375" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y4e-ht-NEs" id="LkO-JE-3m6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Pc-O1-IkM">
@@ -126,11 +147,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Venues Explorer" id="fdw-2G-c40"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ag4-mB-tmL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="fetchVenues" destination="F3p-tS-Rkb" eventType="valueChanged" id="Tj6-cc-vBQ"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="headerStackView" destination="qxS-sH-FeX" id="gl3-qq-Cph"/>
+                        <outlet property="mapView" destination="0Kk-ez-izz" id="hYh-Od-2U9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kfc-vb-9Pj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

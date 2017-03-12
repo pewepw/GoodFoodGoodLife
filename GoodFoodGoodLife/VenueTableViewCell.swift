@@ -17,7 +17,7 @@ class VenueTableViewCell: UITableViewCell {
     @IBOutlet weak var checkinsLabel: UILabel!
     
     var foursquareClient: FoursquareClient!
-    
+
     var venue: Venue! {
         didSet {
             updateUI()

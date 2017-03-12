@@ -42,16 +42,17 @@ class FoursquareClient {
                     return
                 }
                 
-                // 3. completion
-                var venues = [Venue]()
-                for venueDict in venueDictionaries {
-                    let venue = Venue(json: venueDict)
-                    venues.append(venue!)
-                }
                 
-                // let venues = venueDictionaries.flatMap{ venueDict in
-                //   return Venue(json: venueDict)
-                // }
+                //                var venues = [Venue]()
+                //                for venueDict in venueDictionaries {
+                //                    let venue = Venue(json: venueDict)
+                //                    venues.append(venue!)
+                //                }
+                
+                // 3. completion
+                let venues = venueDictionaries.flatMap{ venueDict in
+                    return Venue(json: venueDict)
+                }
                 
                 completion(.success(venues))
                 
